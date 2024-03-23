@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { useStore } from '../store/store'
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {}; // create empty object 'temp'; remember property in object is like index in array
@@ -40,6 +41,7 @@ const HomeScreen = () => {
   });
  const [sortedCoffee, setSortedCoffee] = useState(getCoffeeList(categoryIndex.category, CoffeeList));
 
+  const tabBarHeight = useBottomTabBarHeight();
   return (
     <View>
       <Text>HomeScreen</Text>
