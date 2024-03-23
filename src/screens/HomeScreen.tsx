@@ -11,9 +11,20 @@ const getCategoriesFromData = (data: any) => {
       temp[data[i].name]++;
     }
   }
-  let categories = Object.keys(temp); // extract all properties from temp and make an array
+  // extract all properties from temp and make a 'categories' array, like extracting keys from a dictionary in Python
+  let categories = Object.keys(temp);
   categories.unshift('All'); // add 'All' category at the start
   return categories;
+};
+
+const getCoffeeList = (category: string, data: any) => {
+  // function to sort coffee list from data based on the selected category
+  if (category == 'All') { // return entire coffee list for 'All' category
+    return data;
+  } else { // return sorted coffee list for any specific category other than 'All'
+    let coffeelist = data.filter((item: any) => item.name == category);
+    return coffeelist;
+  }
 };
 
 const HomeScreen = () => {
@@ -27,7 +38,7 @@ const HomeScreen = () => {
     index: 0,
     category: categories[0],
   });
- const [sortedCoffee, setSortedCoffee] = useState(undefined);
+ const [sortedCoffee, setSortedCoffee] = useState(getCoffeeList(categoryIndex.category, CoffeeList));
 
   return (
     <View>
