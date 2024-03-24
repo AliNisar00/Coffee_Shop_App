@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import { useStore } from '../store/store'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { COLORS } from '../theme/theme';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {}; // create empty object 'temp'; remember property in object is like index in array
@@ -43,12 +44,21 @@ const HomeScreen = () => {
 
   const tabBarHeight = useBottomTabBarHeight();
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View style={styles.ScreenContainer}>
+      <StatusBar backgroundColor={COLORS.primaryBlackHex} />
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.ScrollViewFlex}></ScrollView>
     </View>
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  ScreenContainer: {
+    flex: 1,
+    backgroundColor: COLORS.primaryBlackHex,
+  },
+  ScrollViewFlex: {
+    flexGrow: 1, // take entire available space on the screen even if there is no content within
+  }
+});
 
 export default HomeScreen
