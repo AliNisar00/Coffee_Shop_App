@@ -5,9 +5,9 @@ import { COLORS, SPACING } from '../theme/theme';
 import CustomIcon from './CustomIcon';
 
 interface GradientBGIconProps {
-  name: string,
-  color: string,
-  size: number,
+  name: string;
+  color: string;
+  size: number;
 }
 
 const GradientBGIcon: React.FC<GradientBGIconProps> = ({name, color, size}) => {
@@ -21,8 +21,8 @@ const GradientBGIcon: React.FC<GradientBGIconProps> = ({name, color, size}) => {
         <CustomIcon name={name} color={color} size={size} />
       </LinearGradient>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   Container: {
@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-})
+});
 
-export default GradientBGIcon
+export default GradientBGIcon;

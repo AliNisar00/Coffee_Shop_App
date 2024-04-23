@@ -3,6 +3,7 @@ import { ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import { useStore } from '../store/store'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { COLORS } from '../theme/theme';
+import HeaderBar from '../components/HeaderBar';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {}; // create empty object 'temp'; remember property in object is like index in array
@@ -48,7 +49,7 @@ const HomeScreen = () => {
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.ScrollViewFlex}></ScrollView>
       {/* App Header */}
-      
+      <HeaderBar />
     </View>
   )
 }
@@ -63,4 +64,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeScreen
+export default HomeScreen;

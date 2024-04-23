@@ -10,7 +10,7 @@ const ProfilePic = () => {
         style={styles.Image}
       />
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
