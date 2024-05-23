@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StatusBar, StyleSheet, Text, Touchable, TouchableOpacity, View, TextInput } from 'react-native'
 import { useStore } from '../store/store'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
+import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
+import CustomIcon from '../components/CustomIcon';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {}; // create empty object 'temp'; remember property in object is like index in array
@@ -36,7 +37,7 @@ const HomeScreen = () => {
   //console.log('CoffeeLIST =', CoffeeList.length)
   
   const [categories, setCategories] = useState(getCategoriesFromData(CoffeeList));
-  const [searchText, setSearchText] = useState(undefined);
+  const [searchText, setSearchText] = useState('');
   const [categoryIndex, setCategoryIndex] = useState({
     index: 0,
     category: categories[0],
@@ -50,7 +51,29 @@ const HomeScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.ScrollViewFlex}></ScrollView>
       {/* App Header */}
       <HeaderBar />
+
+      {/* Screen Title */}
       <Text style={styles.ScreenTitle}>Find the best {'\n'}coffee for you</Text>
+    
+      {/* Search Input */}
+      <View style={styles.InputContainerComponent}>
+        <TouchableOpacity onPress={() => {}}>
+          <CustomIcon
+            name='search'
+            size={FONTSIZE.size_18}
+            color={searchText.length > 0 ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex}
+            style={styles.SearchInputButton} 
+          />
+        </TouchableOpacity>
+        <TextInput
+          placeholder={'Find your Coffee...'}
+          value={searchText}
+          onChangeText={text => setSearchText(text)}
+          placeholderTextColor={COLORS.primaryLightGreyHex}
+          style={styles.TextInputContainer}
+        />
+      </View>
+    
     </View>
   )
 }
@@ -71,6 +94,31 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 100,
     width: '100%',
+  },
+  InputContainerComponent: {
+    position: 'absolute',
+    top: 200, // Adjust this value as needed to position the input container higher or lower
+    left: SPACING.space_20,
+    right: SPACING.space_20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: COLORS.primaryWhiteHex,
+    borderRadius: SPACING.space_12,
+    padding: SPACING.space_10,
+    shadowColor: COLORS.primaryBlackHex,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  SearchInputButton: {
+    marginRight: SPACING.space_10,
+  },
+  TextInputContainer: {
+    flex: 1,
+    fontFamily: FONTFAMILY.poppins_regular,
+    fontSize: FONTSIZE.size_16,
+    color: COLORS.primaryBlackHex,
   }
 });
 
