@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import { useStore } from '../store/store'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { COLORS } from '../theme/theme';
+import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 
 const getCategoriesFromData = (data: any) => {
@@ -50,6 +50,7 @@ const HomeScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.ScrollViewFlex}></ScrollView>
       {/* App Header */}
       <HeaderBar />
+      <Text style={styles.ScreenTitle}>Find the best {'\n'}coffee for you</Text>
     </View>
   )
 }
@@ -61,6 +62,15 @@ const styles = StyleSheet.create({
   },
   ScrollViewFlex: {
     flexGrow: 1, // take entire available space on the screen even if there is no content within
+  },
+  ScreenTitle: {
+    fontSize: FONTSIZE.size_28,
+    fontFamily: FONTFAMILY.poppins_semibold,
+    color: COLORS.primaryWhiteHex,
+    paddingLeft: SPACING.space_30,
+    position: 'absolute',
+    top: 100,
+    width: '100%',
   }
 });
 
