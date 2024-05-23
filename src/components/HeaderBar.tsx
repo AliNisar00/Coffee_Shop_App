@@ -11,7 +11,11 @@ interface HeaderBarProps { // Header bar properties
 const HeaderBar: React.FC<HeaderBarProps> = ({title}) => {
   return (
     <View style={styles.HeaderContainer}>
-      <GradientBGIcon name="menu" color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_16} />
+      <GradientBGIcon
+        name="menu"
+        color={COLORS.primaryLightGreyHex}
+        size={FONTSIZE.size_16}
+      />
       <Text style={styles.HeaderText}>{title}</Text>
       <ProfilePic />
     </View>
@@ -20,6 +24,9 @@ const HeaderBar: React.FC<HeaderBarProps> = ({title}) => {
 
 const styles = StyleSheet.create({
     HeaderContainer: {
+        position: 'absolute',
+        top: 0,
+        width: '100%',
         padding: SPACING.space_30,
         flexDirection: 'row',
         alignItems: 'center',
