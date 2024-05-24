@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ScrollView, StatusBar, StyleSheet, Text, Touchable, TouchableOpacity, View, TextInput } from 'react-native'
+import { ScrollView, StatusBar, StyleSheet, Text, Touchable, TouchableOpacity, View, TextInput, FlatList } from 'react-native'
 import { useStore } from '../store/store'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
@@ -105,6 +105,20 @@ const HomeScreen = () => {
         ))}
       </ScrollView>
 
+      {/* Coffee Flatlist */}
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={sortedCoffee}
+        contentContainerStyle={styles.FlatListContainer}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => {
+          return <TouchableOpacity></TouchableOpacity>;
+        }}
+      />
+
+      {/* Beans Flatlist */}
+
     </View>
   )
 }
@@ -128,7 +142,7 @@ const styles = StyleSheet.create({
   },
   InputContainerComponent: {
     position: 'absolute',
-    top: 200, // Adjust this value as needed to position the input container higher or lower
+    top: 200,
     left: SPACING.space_20,
     right: SPACING.space_20,
     flexDirection: 'row',
@@ -172,6 +186,11 @@ const styles = StyleSheet.create({
     fontSize: FONTSIZE.size_16,
     color: COLORS.primaryLightGreyHex,
     marginBottom: SPACING.space_4,
+  },
+  FlatListContainer: {
+    gap: SPACING.space_20,
+    paddingVertical: SPACING.space_20,
+    paddingHorizontal: SPACING.space_30,
   },
 });
 
