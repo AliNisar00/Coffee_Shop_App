@@ -115,7 +115,7 @@ const HomeScreen = () => {
         keyExtractor={item => item.id}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => {}}>
               <CoffeeCard
                 id={item.id}
                 index={item.index}
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
   CategoryScrollViewStyle: {
     position: 'absolute',
-    top: 110,
+    top: 117,
     paddingHorizontal: SPACING.space_20,
     marginBottom: SPACING.space_20,
   },
