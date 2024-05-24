@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     right: SPACING.space_20,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.primaryWhiteHex,
+    backgroundColor: COLORS.primaryGreyHex,
     borderRadius: SPACING.space_12,
     padding: SPACING.space_10,
     shadowColor: COLORS.primaryBlackHex,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: FONTFAMILY.poppins_regular,
     fontSize: FONTSIZE.size_16,
-    color: COLORS.primaryBlackHex,
+    color: COLORS.primaryWhiteHex,
   }
 });
 
