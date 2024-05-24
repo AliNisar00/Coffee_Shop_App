@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
   CategoryScrollViewStyle: {
     position: 'absolute',
-    top: 90,
+    top: 110,
     paddingHorizontal: SPACING.space_20,
     marginBottom: SPACING.space_20,
   },

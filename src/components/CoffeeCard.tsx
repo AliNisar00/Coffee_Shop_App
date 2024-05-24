@@ -3,6 +3,7 @@ import { Dimensions, ImageBackground, ImageProps, StyleSheet, Text, Touchable, T
 import LinearGradient from 'react-native-linear-gradient';
 import { BORDERRADIUS, COLORS, FONTSIZE, SPACING } from '../theme/theme';
 import CustomIcon from './CustomIcon';
+import BGIcon from './BGIcon';
 
 const CARD_WIDTH = Dimensions.get('window').width * 0.32;
 
@@ -48,11 +49,15 @@ const CoffeeCard:React.FC<CoffeeCardProps> = ({
       </ImageBackground>
       <Text>{name}</Text>
       <Text>{special_ingredient}</Text>
-      <View>
+      <View style={styles.CardFooterRow}>
         <Text>$ <Text>{price.price}</Text></Text>
       </View>
       <TouchableOpacity>
-        <BGIcon />
+        <BGIcon
+          name={'add'}
+          color={COLORS.primaryWhiteHex}
+          BGColor={COLORS.primaryOrangeHex}
+          size={FONTSIZE.size_10} />
       </TouchableOpacity>
     </LinearGradient>
   );
@@ -67,12 +72,9 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.space_15,
     overflow: 'hidden',
   },
-  CardRatingContainer: {
-
-  },
-  CardRatingText: {
-
-  },
+  CardRatingContainer: {},
+  CardRatingText: {},
+  CardFooterRow: {},
 });
 
 export default CoffeeCard;
