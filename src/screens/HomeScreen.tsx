@@ -5,6 +5,7 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import CustomIcon from '../components/CustomIcon';
+import CoffeeCard from '../components/CoffeeCard';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {}; // create empty object 'temp'; remember property in object is like index in array
@@ -113,7 +114,22 @@ const HomeScreen = () => {
         contentContainerStyle={styles.FlatListContainer}
         keyExtractor={item => item.id}
         renderItem={({item}) => {
-          return <TouchableOpacity></TouchableOpacity>;
+          return (
+            <TouchableOpacity>
+              <CoffeeCard
+                id={item.id}
+                index={item.index}
+                type={item.type}
+                roasted={item.roasted}
+                imagelink_square={item.imagelink_square}
+                name={item.name}
+                special_ingredient={item.special_ingredient}
+                average_rating={item.average_rating}
+                price={item.prices[2]}
+                buttonPressHandler={() => {}}
+              />
+            </TouchableOpacity>
+          );
         }}
       />
 
@@ -166,6 +182,8 @@ const styles = StyleSheet.create({
     color: COLORS.primaryWhiteHex,
   },
   CategoryScrollViewStyle: {
+    position: 'absolute',
+    top: 90,
     paddingHorizontal: SPACING.space_20,
     marginBottom: SPACING.space_20,
   },
