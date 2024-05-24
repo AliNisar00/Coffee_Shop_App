@@ -42,9 +42,13 @@ const HomeScreen = () => {
     index: 0,
     category: categories[0],
   });
- const [sortedCoffee, setSortedCoffee] = useState(getCoffeeList(categoryIndex.category, CoffeeList));
+
+  const [sortedCoffee, setSortedCoffee] = useState(getCoffeeList(categoryIndex.category, CoffeeList));
 
   const tabBarHeight = useBottomTabBarHeight();
+  
+  // console.log('categories = ', categories);
+  
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
@@ -73,7 +77,34 @@ const HomeScreen = () => {
           style={styles.TextInputContainer}
         />
       </View>
-    
+
+      {/* Category Scroller */}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.CategoryScrollViewStyle}>
+        {categories.map((data, index) => (
+          <View 
+            key={index.toString()} 
+            style={styles.CategoryScrollViewContainer}>
+            <TouchableOpacity
+              style={styles.CategoryScrollViewItem}
+              onPress={() => {
+                setCategoryIndex({index: index, category: categories[index]});
+                setSortedCoffee([...getCoffeeList(categories[index], CoffeeList)])
+                }}>
+              <Text
+                style={[styles.CategoryTextActive,
+                categoryIndex.index == index ? {color: COLORS.primaryOrangeHex} : {},
+                ]}>
+                  {data}
+              </Text>
+              {categoryIndex.index == index ? <View style={styles.ActiveCategory} /> : <></>}
+            </TouchableOpacity>
+          </View>
+        ))}
+      </ScrollView>
+
     </View>
   )
 }
@@ -116,10 +147,32 @@ const styles = StyleSheet.create({
   },
   TextInputContainer: {
     flex: 1,
-    fontFamily: FONTFAMILY.poppins_regular,
-    fontSize: FONTSIZE.size_16,
+    fontFamily: FONTFAMILY.poppins_medium,
+    fontSize: FONTSIZE.size_14,
     color: COLORS.primaryWhiteHex,
-  }
+  },
+  CategoryScrollViewStyle: {
+    paddingHorizontal: SPACING.space_20,
+    marginBottom: SPACING.space_20,
+  },
+  CategoryScrollViewContainer: {
+    paddingHorizontal: SPACING.space_15,
+  },
+  CategoryScrollViewItem: {
+    alignItems: 'center',
+  },
+  ActiveCategory: {
+    height: SPACING.space_10,
+    width: SPACING.space_10,
+    borderRadius: BORDERRADIUS.radius_10,
+    backgroundColor: COLORS.primaryOrangeHex,
+  },
+  CategoryTextActive: {
+    fontFamily: FONTFAMILY.poppins_semibold,
+    fontSize: FONTSIZE.size_16,
+    color: COLORS.primaryLightGreyHex,
+    marginBottom: SPACING.space_4,
+  },
 });
 
 export default HomeScreen;
