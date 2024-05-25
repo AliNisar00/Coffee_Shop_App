@@ -74,7 +74,18 @@ const HomeScreen = () => {
             onChangeText={text => setSearchText(text)}
             placeholderTextColor={COLORS.primaryLightGreyHex}
             style={styles.TextInputContainer}
-          />
+            />
+            {searchText.length > 0 ? (
+              <TouchableOpacity>
+                <CustomIcon
+                  name='close'
+                  size={FONTSIZE.size_16}
+                  color={COLORS.primaryLightGreyHex}
+                />
+              </TouchableOpacity>
+              ) : (
+              <></>
+            )}
         </View>
 
         {/* Category Scroller */}
